@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Custom properties --- */
+
+:root {
+  --spacing: 0.5rem;
+
+  /* ------ Fonts ------ */
+  --primary-font: 'Poppins', sans-serif;
+
+  /* ------ Borders ------ */
+  --radius-1: 16px;
+  --radius-2: 8px;
+  --radius-3: 4px;
+
+  /* ------ colors ------ */
+  /* menu knoppen */
+  --menu-1: #3f92b6;
+  --menu-2: #599ae7;
+  --menu-3: #954be2;
+  --menu-4: #06a192;
+  --menu-5: #fd8c73;
+
+  /* Methods */
+  --method-1: #1cb854;
+  --method-2: #37c6ab;
+  --method-3: #059cc0;
+  --method-4: #ff8c59;
+  --method-5: #ffa02e;
+
+  /* Menu layover */
+  --menu-layover: #292929f2;
+
+  /* Backgrounds */
+  --menu-background: linear-gradient(0deg, rgba(28, 88, 114, 1) 0%, rgba(63, 147, 183, 1) 100%);
+  --story-nightmode-background: linear-gradient(0deg, rgba(71, 24, 113, 1) 0%, rgba(4, 4, 4, 1) 100%);
+  --lessons-background: linear-gradient(0deg, rgba(20, 33, 81, 1) 0%, rgba(71, 24, 113, 1) 100%);
+}
+
+/*██    ██  █████  ██    ██ ██  ██████   █████  ████████ ██ ███████     ███    ███ ███████ ███    ██ ██    ██ 
+████   ██ ██   ██ ██    ██ ██ ██       ██   ██    ██    ██ ██          ████  ████ ██      ████   ██ ██    ██ 
+██ ██  ██ ███████ ██    ██ ██ ██   ███ ███████    ██    ██ █████       ██ ████ ██ █████   ██ ██  ██ ██    ██ 
+██  ██ ██ ██   ██  ██  ██  ██ ██    ██ ██   ██    ██    ██ ██          ██  ██  ██ ██      ██  ██ ██ ██    ██ 
+██   ████ ██   ██   ████   ██  ██████  ██   ██    ██    ██ ███████     ██      ██ ███████ ██   ████  █████*/
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: var(--menu-layover);
+  position: fixed;
+  top: -100%;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+
+  & ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 3rem;
+
+    & li {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & > a {
+        display: inline-block;
+        padding: 1.5rem;
+        border-radius: var(--radius-1);
+        margin-bottom: 0.25rem;
+      }
+
+      & > p {
+        font: 400 1rem var(--primary-font);
+        color: white;
+      }
+    }
+  }
+}
+
+.menu-open {
+  top: 0rem;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  appearance: none;
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--radius-1);
+  cursor: pointer;
+}
+
+.menu-button.menu {
+  background: white;
+  display: none;
+}
+
+.menu-button.home {
+  background: var(--menu-layover);
+}
+
+.hidden {
+  display: none;
+}
+
+.menu li:first-child a {
+  background: var(--menu-1);
+}
+
+.menu li:nth-child(2) a {
+  background: var(--menu-2);
+}
+
+.menu li:nth-child(3) a {
+  background: var(--menu-3);
+}
+
+.menu li:nth-child(4) a {
+  background: var(--menu-4);
+}
+
+.menu li:nth-child(5) a {
+  background: var(--menu-5);
+}
+
+/* --- Algemene styling --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--primary-font);
+  font-weight: 600;
+}
+
+h1 {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 28px;
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  outline: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+section {
+  margin: 0 0.75rem 0 0.75rem;
+}
+
+/* --- Lessons pagina --- */
+
+.lessons {
+  background: var(--lessons-background);
+  font-family: var(--primary-font);
+
+  /* Activities */
+
+  .activity {
+    margin-bottom: 2rem;
+  }
+
+  .activity ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    gap: 1.5rem;
+  }
+
+  .activity li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 1rem;
+    border-radius: var(--radius-2);
+    background: #139943;
+    color: white;
+  }
+
+  /* Own playlists */
+
+  .own-playlists {
+    margin-bottom: 2rem;
+  }
+
+  .own-playlists ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .add-playlist button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: var(--spacing);
+    height: 100%;
+    background: #494375;
+    border-radius: var(--radius-2);
+  }
+
+  .add-playlist span {
+    color: white;
+  }
+
+  /* Algemene styling playlist */
+
+  .playlist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    width: 100%;
+    padding: var(--spacing);
+    background: white;
+    border-radius: var(--radius-2);
+  }
+
+  .playlist .audio-container {
+    margin-top: auto;
+    font-weight: bold;
+  }
+
+  .playlist img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: var(--radius-2);
+  }
+
+  .playlist figcaption {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .audio-container {
+    display: flex;
+    gap: var(--spacing);
+    line-height: 1;
+    align-items: center;
+    font-size: 0.75rem;
+
+    svg {
+      display: block;
+    }
+  }
+
+  /* All stories */
+
+  .stories {
+    margin-bottom: 2rem;
+  }
+
+  .stories ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing);
+    margin-bottom: var(--spacing);
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing);
+
+    button {
+      padding: 0.25rem var(--spacing);
+      background: #9264f4;
+      border-radius: var(--radius-2);
+
+      svg {
+        display: block;
+      }
+    }
+
+    p {
+      color: white;
+    }
+  }
+
+  /* Algemene styling story */
+
+  .story {
+    display: flex;
+    align-items: start;
+    gap: var(--spacing);
+    /* width: 100%; */
+    padding: var(--spacing);
+    background: white;
+    border-radius: var(--radius-3);
+    /* margin-bottom: 1rem; */
+  }
+
+  .story img:first-child {
+    border-radius: var(--radius-3);
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+
+  .story-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    width: 100%;
+  }
+
+  .story-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .story-title img {
+    width: 1.5rem;
+  }
+
+  .story p {
+    font-size: 0.75rem;
+  }
+
+  .story-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .download-add {
+    display: flex;
+    gap: var(--spacing);
+
+    svg {
+      display: block;
+    }
+  }
+
+  /* Languages */
+
+  .language-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    div {
+      display: flex;
+    }
+  }
+
+  .language-content button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing);
+    padding: 0.25rem;
+    /* margin-right: 1rem; */
+    background: white;
+    font-weight: bold;
+    border-radius: var(--radius-2);
+  }
+
+  .lang-button-container {
+    display: flex;
+    gap: var(--spacing);
+  }
+
+  .language-content a {
+    align-self: center;
+    color: white;
+  }
+
+  /* Liked & suggested playlists */
+
+  .liked-playlists {
+    margin-bottom: 2rem;
+    margin-right: 0;
+  }
+
+  .liked-playlists ul,
+  .suggested-playlists ul {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+  }
+
+  .liked-playlists ul::-webkit-scrollbar,
+  .suggested-playlists ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .liked-playlists .playlist,
+  .suggested-playlists .playlist {
+    width: 10rem;
+    flex-shrink: 0;
+  }
+
+  .liked-playlists .playlist:last-of-type,
+  .suggested-playlists .playlist:last-of-type {
+    margin-right: 0.75rem;
+  }
+
+  .playlist-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+
+    svg {
+      display: block;
+    }
+  }
+
+  .suggested-playlists {
+    padding-bottom: 2rem;
+    margin-right: 0;
+  }
+}
+
+/* Hovers & active states */
+
+.active {
+  border: 5px solid white;
+}
